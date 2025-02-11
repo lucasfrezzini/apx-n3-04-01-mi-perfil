@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import ViteExpress from "vite-express";
 import { Profile } from "./models/profile";
 
@@ -6,7 +7,8 @@ import { profileRouter } from "./views/profileRouter";
 
 const app = express();
 
-app.use(express.json());
+app.use(cors());
+app.use(express.json({ limit: "50mb" }));
 
 // User.sync({ force: true });
 // Auth.sync({ force: true });
